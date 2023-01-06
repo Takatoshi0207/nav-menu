@@ -1,0 +1,49 @@
+@charset "UTF-8";
+.header-btn {
+  background: bisque;
+  max-width: 250px;
+  height: 150px;
+  padding: 1em 1em 0 1em;
+  position: relative;
+}
+.header-btn ul {
+  margin: 0.5em 0.5em 0 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: center;
+}
+.header-btn ul .header-about {
+  width: 31px;
+  content: url("../favicon/about.svg");
+}
+.header-btn ul li {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: initial;
+  flex-direction: column;
+  justify-content: space-around;
+  transition: 0.5s;
+  font-size: 16px;
+  color: black;
+}
+.header-btn ul .after-text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/*** ホバー時に文言を入れ替え ***/
+.header-btn:hover .before-text {
+  visibility: hidden;
+  opacity: 0;
+}
+.header-btn:hover .after-text {
+  visibility: visible;
+  opacity: 1;
+}
+/*# sourceMappingURL=header-style.css.map */
