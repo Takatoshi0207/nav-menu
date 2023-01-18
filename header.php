@@ -44,10 +44,8 @@ if (!defined('ABSPATH')) {
 					<li class="header__list-item">
 						<a href="<?php echo site_url('#'); ?>" class="header__list-item-link">
 							<img class="header__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/about.svg" alt="" loading="lazy" height="60">
-							<div class="header__list-item-link-text">
-								<span class="header__list-item-link-nomal">About as</span>
-								<span class="header__list-item-link-hover">インテリアロード<br>について</span>
-							</div>
+							<span class="header__list-item-link-nomal">About as</span>
+							<span class="header__list-item-link-hover">インテリアロード<br>について</span>
 						</a>
 					</li>
 					<li class="header__list-item">

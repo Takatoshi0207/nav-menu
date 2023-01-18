@@ -11,7 +11,7 @@
   background-position: center;
 }
 .header-inner {
-  padding: 30px 3% 0 3%;
+  padding: 20px 3% 0 3%;
 }
 .header__nav {
   display: flex;
@@ -31,7 +31,7 @@
 }
 .header__list-item {
   list-style: none;
-  width: 110px;
+  width: 130px;
   height: 55px;
 }
 .header__list-item:hover .header__list-item-link-nomal {
@@ -41,9 +41,9 @@
 .header__list-item:hover .header__list-item-link-hover {
   visibility: visible;
   opacity: 1;
-  font-size: 0.8em;
+  font-size: 0.9em;
   line-height: 1.2em;
-  margin-top: 0;
+  margin-top: 5px;
 }
 .header__list-item-link {
   display: flex;
