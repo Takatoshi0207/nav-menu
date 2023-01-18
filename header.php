@@ -28,18 +28,65 @@ if (!defined('ABSPATH')) {
 
 	<?php wp_head(); ?>
 	<?php astra_head_bottom(); ?>
-	<nav class="header-btn">
-		<ul>
-			<img class="header-about">
-			<li class="before-text">About as</li>
-			<li class="after-text">インテリアロードについて</li>
-		</ul>
-	</nav>
+
 </head>
 
 <body <?php astra_schema_body(); ?> <?php body_class(); ?>>
 	<?php astra_body_top(); ?>
 	<?php wp_body_open(); ?>
+	<header class="header">
+		<div class="l-header-inner">
+			<a href="<?php echo home_url(); ?>" class="header__logo">
+				<img class="header__logo-img" src="<?php echo get_stylesheet_directory_uri();  ?>/favicon/logo.svg" alt="" loading="lazy" height="60">
+			</a>
+			<nav class="header__nav">
+				<ul class="header__list">
+					<li class="header__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__list-item-link">
+							<img class="header__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/about.svg" alt="" loading="lazy" height="60">
+							<span class="header__list-item-link-nomal">About as</span>
+							<span class="header__list-item-link-hover">インテリアロード<br>について</span>
+						</a>
+					</li>
+					<li class="header__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__list-item-link">
+							<img class="header__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/menber.svg" alt="" loading="lazy" height="60">
+							<span class="header__list-item-link-nomal">Members</span>
+							<span class="header__list-item-link-hover">メンバー紹介</span>
+						</a>
+					</li>
+					<li class="header__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__list-item-link">
+							<img class="header__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/message.svg" alt="" loading="lazy" height="60">
+							<span class="header__list-item-link-nomal">Message</span>
+							<span class="header__list-item-link-hover">代表メッセージ</span>
+						</a>
+					</li>
+					<li class="header__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__list-item-link">
+							<img class="header__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/recruit.svg" alt="" loading="lazy" height="60">
+							<span class="header__list-item-link-nomal">Recruit</span>
+							<span class="header__list-item-link-hover">採用情報</span>
+						</a>
+					</li>
+					<li class="header__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__list-item-link">
+							<img class="header__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/faq.svg" alt="" loading="lazy" height="60">
+							<span class="header__list-item-link-nomal">FAQ</span>
+							<span class="header__list-item-link-hover">ご質問</span>
+						</a>
+					</li>
+					<li class="header__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__list-item-link">
+							<img class="header__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/entry.svg" alt="" loading="lazy" height="60">
+							<span class="header__list-item-link-nomal">Entry</span>
+							<span class="header__list-item-link-hover">応募</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header> <!-- .header -->
 
 	<a class="skip-link screen-reader-text" href="#content" role="link" title="<?php echo esc_html(astra_default_strings('string-header-skip-link', false)); ?>">
 		<?php echo esc_html(astra_default_strings('string-header-skip-link', false)); ?>
