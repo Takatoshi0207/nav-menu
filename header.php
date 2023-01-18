@@ -35,17 +35,19 @@ if (!defined('ABSPATH')) {
 	<?php astra_body_top(); ?>
 	<?php wp_body_open(); ?>
 	<header class="header">
-		<div class="l-header-inner">
-			<a href="<?php echo home_url(); ?>" class="header__logo">
-				<img class="header__logo-img" src="<?php echo get_stylesheet_directory_uri();  ?>/favicon/logo.svg" alt="" loading="lazy" height="60">
-			</a>
+		<div class="header-inner">
 			<nav class="header__nav">
+				<a href="<?php echo home_url(); ?>" class="header__logo">
+					<img class="header__logo-img" src="<?php echo get_stylesheet_directory_uri();  ?>/favicon/logo.svg" alt="" loading="lazy" height="60">
+				</a>
 				<ul class="header__list">
 					<li class="header__list-item">
 						<a href="<?php echo site_url('#'); ?>" class="header__list-item-link">
 							<img class="header__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/about.svg" alt="" loading="lazy" height="60">
-							<span class="header__list-item-link-nomal">About as</span>
-							<span class="header__list-item-link-hover">インテリアロード<br>について</span>
+							<div class="header__list-item-link-text">
+								<span class="header__list-item-link-nomal">About as</span>
+								<span class="header__list-item-link-hover">インテリアロード<br>について</span>
+							</div>
 						</a>
 					</li>
 					<li class="header__list-item">
