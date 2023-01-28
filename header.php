@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
 	<?php astra_body_top(); ?>
 	<?php wp_body_open(); ?>
 	<header class="header">
-		<div class="header-inner">
+		<div class="header-inner hiddenSp">
 			<nav class="header__nav">
 				<a href="<?php echo home_url(); ?>" class="header__logo">
 					<img class="header__logo-img" src="<?php echo get_stylesheet_directory_uri();  ?>/favicon/logo.svg" alt="" loading="lazy" height="60">
@@ -86,6 +86,15 @@ if (!defined('ABSPATH')) {
 				</ul>
 			</nav>
 		</div>
+			<!-- sp menu -->
+			<div class="hiddenPc">
+				<div class="header__sp">
+					<a href="<?php echo home_url(); ?>" class="header__sp-logo">
+						<img class="header__logo-img" src="<?php echo get_stylesheet_directory_uri();  ?>/favicon/logo.svg" alt="" loading="lazy" height="60">
+					</a>
+					<div class="openbtn"><span></span><span></span><span></span></div>
+				</div>
+			</div>
 	</header> <!-- .header -->
 
 	<a class="skip-link screen-reader-text" href="#content" role="link" title="<?php echo esc_html(astra_default_strings('string-header-skip-link', false)); ?>">
