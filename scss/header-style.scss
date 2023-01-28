@@ -14,23 +14,26 @@
     inset 0px -3px 6px -2px rgba(0, 0, 0, 0.3);
 
   &-inner {
-    padding: 20px 3% 0 3%;
+    padding: 20px 0 0 3%;
   }
   &__nav {
     display: flex;
+    width: 100%;
     align-items: center;
     height: 100px;
   }
   &__logo {
     width: 30%;
     &-img {
-      height: 100px;
+      height: 8.5em;
     }
   }
   &__list {
     margin-left: auto;
     display: flex;
+    width: 70%;
     gap: 5px;
+    justify-content: flex-end;
 
     &-item {
       list-style: none;
@@ -59,7 +62,7 @@
         font-weight: bold;
 
         &-img {
-          height: 35px;
+          height: 2.8em;
           margin: 0 auto;
         }
         &-hover {
@@ -90,8 +93,8 @@
     .openbtn {
       position: relative;
       cursor: pointer;
-      width: 50px;
-      height: 50px;
+      width: 80px;
+      height: 60px;
       border-radius: 5px;
 
       span {
@@ -149,17 +152,38 @@
 
 // 768px以下
 @include bs.mq(tb) {
+  .hiddenPc {
+    display: block;
+    padding: 1.5em 0;
+  }
   .hiddenSp {
     display: none;
   }
-  .hiddenPc {
-    display: block;
+  .header {
+    &__list {
+      width: 50%;
+    }
+    &__logo {
+      &-img {
+        height: 120px;
+      }
+    }
   }
 }
 
 // 576px以下
 @include bs.mq(sp) {
   .header {
-    background: red;
+    &__list {
+      width: 30%;
+    }
+    &__logo {
+      &-img {
+        height: 120px;
+      }
+    }
+    &__sp {
+      margin: 0 10px;
+    }
   }
 }
