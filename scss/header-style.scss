@@ -173,13 +173,17 @@
 
 // 576px以下
 @include bs.mq(sp) {
+  .hiddenPc {
+    display: block;
+    padding: 2.4em 0 0 0;
+  }
   .header {
     &__list {
       width: 30%;
     }
     &__logo {
       &-img {
-        height: 120px;
+        height: 90px;
       }
     }
     &__sp {

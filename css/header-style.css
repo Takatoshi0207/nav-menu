@@ -152,11 +152,15 @@
   }
 }
 @media screen and (max-width: 576px) {
+  .hiddenPc {
+    display: block;
+    padding: 2.4em 0 0 0;
+  }
   .header__list {
     width: 30%;
   }
   .header__logo-img {
-    height: 120px;
+    height: 90px;
   }
   .header__sp {
     margin: 0 10px;
