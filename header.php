@@ -93,6 +93,62 @@ if (!defined('ABSPATH')) {
 						<img class="header__logo-img" src="<?php echo get_stylesheet_directory_uri();  ?>/favicon/logo.svg" alt="" loading="lazy" height="60">
 					</a>
 					<div class="openbtn"><span></span><span></span><span></span></div>
+					<ul class="header__sp__list">
+					<li class="header__sp__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__sp__list-item-link">
+							<img class="header__sp__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/about.svg" alt="" loading="lazy" height="60">
+							<div class="header__sp__list-item-linkWrap">
+								<span class="header__sp__list-item-link-nomal">About as</span>
+								<span class="header__sp__list-item-link-hover">インテリアロードについて</span>
+							</div>
+						</a>
+					</li>
+					<li class="header__sp__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__sp__list-item-link">
+							<img class="header__sp__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/menber.svg" alt="" loading="lazy" height="60">
+							<div class="header__sp__list-item-linkWrap">
+								<span class="header__sp__list-item-link-nomal">Members</span>
+								<span class="header__sp__list-item-link-hover">メンバー紹介</span>
+							</div>
+						</a>
+					</li>
+					<li class="header__sp__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__sp__list-item-link">
+							<img class="header__sp__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/message.svg" alt="" loading="lazy" height="60">
+							<div class="header__sp__list-item-linkWrap">
+								<span class="header__sp__list-item-link-nomal">Message</span>
+								<span class="header__sp__list-item-link-hover">代表メッセージ</span>
+							</div>
+						</a>
+					</li>
+					<li class="header__sp__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__sp__list-item-link">
+							<img class="header__sp__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/recruit.svg" alt="" loading="lazy" height="60">
+							<div class="header__sp__list-item-linkWrap">
+								<span class="header__sp__list-item-link-nomal">Recruit</span>
+								<span class="header__sp__list-item-link-hover">採用情報</span>
+							</div>
+						</a>
+					</li>
+					<li class="header__sp__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__sp__list-item-link">
+							<img class="header__sp__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/faq.svg" alt="" loading="lazy" height="60">
+							<div class="header__sp__list-item-linkWrap">
+								<span class="header__sp__list-item-link-nomal">FAQ</span>
+								<span class="header__sp__list-item-link-hover">ご質問</span>
+							</div>
+						</a>
+					</li>
+					<li class="header__sp__list-item">
+						<a href="<?php echo site_url('#'); ?>" class="header__sp__list-item-link">
+							<img class="header__sp__list-item-link-img" src="<?php echo get_stylesheet_directory_uri(); ?>/favicon/entry.svg" alt="" loading="lazy" height="60">
+							<div class="header__sp__list-item-linkWrap">
+								<span class="header__sp__list-item-link-nomal">Entry</span>
+								<span class="header__sp__list-item-link-hover">応募</span>
+							</div>
+						</a>
+					</li>
+				</ul>
 				</div>
 			</div>
 	</header> <!-- .header -->

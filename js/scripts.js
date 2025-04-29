@@ -4,7 +4,8 @@
 
     initMobileMenu: function () {
       jQuery('.openbtn').click(function () {
-        jQuery(this).toggleClass('active');
+        jQuery('.openbtn').toggleClass('active');
+        // jQuery('.header__sp__list').css('right','0');
       });
       
     }
@@ -12,7 +13,7 @@
 
   // Document Ready
   jQuery(document).ready( function() {
-    console.log('aaaa');
+    // console.log('aaaa');
     app.initMobileMenu();
     
   });
