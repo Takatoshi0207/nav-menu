@@ -10,6 +10,7 @@
     "build:css": "tailwindcss -i css/tailwind-src.css -o css/tailwind.css --minify"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/cli": "^4.1.4",
     "@tailwindcss/postcss": "^4.1.4",
     "postcss": "^8.5.3",
