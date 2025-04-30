@@ -1,6 +1,7 @@
 <?php
 /* Template Name: お知らせ */
-get_header(); ?>
+get_header();
+?>
 <main class="mx-auto max-w-3xl p-6">
   <h1 class="text-3xl font-bold mb-6"><?php the_title(); ?></h1>
 

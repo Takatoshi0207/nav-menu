@@ -35,3 +35,4 @@ function child_enqueue_styles()
 	);
 }
 add_action('wp_enqueue_scripts', 'child_enqueue_styles', 15);
+add_filter('astra_the_title_enabled', '__return_false');
