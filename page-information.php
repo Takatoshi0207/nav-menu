@@ -1,9 +1,9 @@
 <?php
 /* Template Name: お知らせ */
 get_header();
+// ページ番号取得 
+$paged = max(1, get_query_var('paged'), get_query_var('page'));
 ?>
-<!-- ページ番号取得 -->
-$paged = max( 1, get_query_var('paged'), get_query_var('page') );
 
 <div class="relative w-full border-solid border-b-4 border-b-[#FCCC78]">
   <img
@@ -20,6 +20,8 @@ $paged = max( 1, get_query_var('paged'), get_query_var('page') );
     <h1 class="md:!text-6xl !text-4xl !text-white font-extrabold mb-6 inline"><?php the_title(); ?></h1>
   </div>
 </div>
+
+<!-- 背景 -->
 <div class="
     bg-[url('<?php echo get_stylesheet_directory_uri(); ?>/images/bgImage.webp')] 
     bg-cover bg-center bg-repeat  flex justify-center
@@ -37,84 +39,106 @@ $paged = max( 1, get_query_var('paged'), get_query_var('page') );
     ]);
 
     if ($news->have_posts()):
-      while ($news->have_posts()) : $news->the_post();
-        $i = $news->current_post; // 0 始まりのインデックス
 
-        /*** 1件目：フィーチャー表示 ***/
-        if (0 === $i):
-          echo '<div class="flex gap-6 w-full py-10 2xl:justify-center">';
+      if (1 === $paged): //1ページ目
+
+        while ($news->have_posts()) : $news->the_post();
+          $i = $news->current_post; // 0 始まりのインデックス
+
+          /*** 1件目：フィーチャー表示 ***/
+          if (0 === $i):
+            echo '<div class="flex gap-6 w-full py-10 2xl:justify-center">';
     ?>
-          <article class="relative overflow-hidden max-w-3xl w-1/3 aspect-square rounded-lg shadow-md">
-            <a href="<?php the_permalink(); ?>" class="block">
-              <!-- サムネイル -->
-              <?php the_post_thumbnail('large', ['class' => 'absolute inset-0 w-full h-full object-cover']); ?>
+            <article class="relative overflow-hidden max-w-3xl w-1/3 aspect-square rounded-lg shadow-md">
+              <a href="<?php the_permalink(); ?>" class="block">
+                <!-- サムネイル -->
+                <?php the_post_thumbnail('large', ['class' => 'absolute inset-0 w-full h-full object-cover']); ?>
 
-              <!-- オーバーレイ -->
-              <div class="absolute inset-0 bg-black bg-opacity-25"></div>
+                <!-- オーバーレイ -->
+                <div class="absolute inset-0 bg-black bg-opacity-25"></div>
 
-              <!-- ここに文字やボタンなども重ねてもOK -->
-              <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
-                <p class="text-xl font-semibold"><?php echo get_the_date('Y/m/d'); ?></p>
-                <h2 class="text-3xl text-white font-bold"><?php the_title(); ?></h2>
+                <!-- ここに文字やボタンなども重ねてもOK -->
+                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                  <p class="text-xl font-semibold"><?php echo get_the_date('Y/m/d'); ?></p>
+                  <h2 class="text-3xl text-white font-bold"><?php the_title(); ?></h2>
+                  <?php get_template_part('template-parts/button/arrow-button'); ?>
+                </div>
+              </a>
+            </article>
+
+            <!-- 2・3件目：2カラムグリッド -->
+          <?php elseif (1 === $i || 2 === $i):
+
+            // 2件目（$i===1）のタイミングでグリッドを開く
+            if (1 === $i):
+              echo '<ul class="space-y-4 max-w-3xl w-2/3">';
+            endif;
+          ?>
+            <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
+              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden flex items-center justify-center">
+                <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
+              </a>
+              <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
+                <div>
+                  <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
+                  <h4 class="text-[#090914] text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
+                </div>
                 <?php get_template_part('template-parts/button/arrow-button'); ?>
               </div>
-            </a>
-          </article>
+            </li>
+            <?php
+            // 3件目（$i===2）のタイミングでグリッドを閉じ、リストを開く
+            if (2 === $i):
+              echo '</div>';                   // grid 終了
+              echo '<hr class="border-2 border-gray-400 h-0.5" />';
+              echo '<ul class="mt-8 grid grid-cols-2 gap-6">'; // list 開始
+            endif; ?>
 
-          <!-- 2・3件目：2カラムグリッド -->
-        <?php elseif (1 === $i || 2 === $i):
+            <!-- /*** 4件目以降：リスト表示 ***/ -->
+          <?php else: ?>
+            <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
+              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden flex items-center justify-center">
+                <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
+              </a>
+              <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
+                <div>
+                  <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
+                  <h4 class="text-[#090914] text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
+                </div>
+                <?php get_template_part('template-parts/button/arrow-button'); ?>
+              </div>
+            </li>
+          <?php endif;
+        endwhile;
 
-          // 2件目（$i===1）のタイミングでグリッドを開く
-          if (1 === $i):
-            echo '<ul class="space-y-4 max-w-3xl w-2/3">';
-          endif;
-        ?>
-          <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
-            <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden flex items-center justify-center">
+        if ($news->post_count > 3) {
+          echo '</ul>';
+        }
+        wp_reset_postdata();
+
+      else:
+
+        // <!-- ページネーション -->
+        echo '<ul class="mt-8 grid grid-cols-2 gap-6">';
+        while ($news->have_posts()) : $news->the_post(); ?>
+          <li class="flex items-start border-l-4 border-gray-100 pl-4">
+            <a href="<?php the_permalink(); ?>"
+              class="flex-shrink-0 w-[150px] aspect-square overflow-hidden flex items-center justify-center">
               <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
             </a>
-            <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
+            <div class="ml-4 flex flex-1 flex-col justify-between">
               <div>
                 <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
-                <h4 class="text-[#090914] text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
+                <h4 class="text-2xl font-medium text-[#090914] hover:underline"><?php the_title(); ?></h4>
               </div>
               <?php get_template_part('template-parts/button/arrow-button'); ?>
             </div>
           </li>
-          <?php
-          // 3件目（$i===2）のタイミングでグリッドを閉じ、リストを開く
-          if (2 === $i):
-            echo '</div>';                   // grid 終了
-            echo '<hr class="border-2 border-gray-400 h-0.5" />';
-            echo '<ul class="mt-8 grid grid-cols-2 gap-6">'; // list 開始
-          endif;
-
-          /*** 4件目以降：リスト表示 ***/
-        else: ?>
-          <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
-            <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden flex items-center justify-center">
-              <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
-            </a>
-            <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
-              <div>
-                <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
-                <h4 class="text-[#090914] text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
-              </div>
-              <?php get_template_part('template-parts/button/arrow-button'); ?>
-            </div>
-          </li>
-        <?php endif; ?>
-
-      <?php endwhile; ?>
-
-      <?php
-      if ($news->post_count > 3) {
+        <?php endwhile;
         echo '</ul>';
-      }
-      wp_reset_postdata();
-      ?>
-      <!-- ページネーション -->
-      <?php
+        wp_reset_postdata();
+
+      endif;
       $links = paginate_links([
         'base'      => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
         'format'    => '?paged=%#%',
@@ -127,7 +151,7 @@ $paged = max( 1, get_query_var('paged'), get_query_var('page') );
       ]);
 
       if ($links):
-      ?>
+        ?>
         <nav class="pt-12">
           <ul class="flex justify-center space-x-4 text-2xl">
             <?php foreach ($links as $link):
@@ -143,9 +167,9 @@ $paged = max( 1, get_query_var('paged'), get_query_var('page') );
             <?php endforeach; ?>
           </ul>
         </nav>
-      <?php endif; ?>
+      <?php endif;
 
-    <?php else: ?>
+    else: ?>
       <p class="text-center py-16 text-gray-600 text-xl">お知らせはありません。</p>
     <?php endif; ?>
   </div>
