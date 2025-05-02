@@ -121,7 +121,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
         // <!-- ページネーション -->
         echo '<ul class="mt-8 grid grid-cols-2 gap-6">';
         while ($news->have_posts()) : $news->the_post(); ?>
-          <li class="flex items-start border-l-4 border-gray-100 pl-4">
+          <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
             <a href="<?php the_permalink(); ?>"
               class="flex-shrink-0 w-[150px] aspect-square overflow-hidden flex items-center justify-center">
               <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
