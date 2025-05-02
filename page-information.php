@@ -23,7 +23,7 @@ get_header();
     ">
 
   <!-- コンテンツ -->
-  <div class="bg-white w-3/4 px-8 py-12 space-y-8">
+  <div class="bg-white w-3/4 max-w-8xl px-8 py-12 space-y-8">
     <?php
     $news = new WP_Query([
       'post_type'      => 'post',
@@ -38,9 +38,9 @@ get_header();
 
         /*** 1件目：フィーチャー表示 ***/
         if (0 === $i):
-          echo '<div class="flex gap-6 w-full">';
+          echo '<div class="flex gap-6 w-full py-10 2xl:justify-center">';
     ?>
-          <article class="overflow-hidden rounded-lg shadow-md">
+          <article class="overflow-hidden max-w-3xl w-1/2 rounded-lg shadow-md">
             <a href="<?php the_permalink(); ?>">
               <?php the_post_thumbnail('large', ['class' => 'w-full h-64 object-cover']); ?>
               <div class="p-4">
@@ -55,10 +55,10 @@ get_header();
 
           // 2件目（$i===1）のタイミングでグリッドを開く
           if (1 === $i):
-            echo '<ul class="flex-1 space-y-4">';
+            echo '<ul class="space-y-4 max-w-3xl w-full">';
           endif;
         ?>
-          <li class="flex place-items-stretch w-full border-l-4 border-gray-100 pl-4">
+          <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
             <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden">
               <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
             </a>
@@ -67,30 +67,29 @@ get_header();
                 <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
                 <h4 class="text-[#090914] text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
               </div>
-              <button class="ml-auto bg-black w-[60px] h-[24px] flex items-center justify-center">
-                <img
-                  src="<?php echo get_stylesheet_directory_uri(); ?>/svg/right_arrow.svg"
-                  alt="→"
-                  class="w-5 h-5 filter invert">
-              </button>
+              <?php get_template_part('template-parts/button/arrow-button'); ?>
             </div>
           </li>
           <?php
           // 3件目（$i===2）のタイミングでグリッドを閉じ、リストを開く
           if (2 === $i):
             echo '</div>';                   // grid 終了
-            echo '<ul class="mt-8 space-y-4">'; // list 開始
+            echo '<hr class="border-2 border-gray-400 h-0.5" />';
+            echo '<ul class="mt-8 grid grid-cols-2 gap-6">'; // list 開始
           endif;
 
           /*** 4件目以降：リスト表示 ***/
         else: ?>
-          <li class="flex items-center border-l-4 border-gray-100 pl-4">
-            <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-24 h-16 overflow-hidden">
-              <?php the_post_thumbnail('thumbnail', ['class' => 'w-full h-full object-cover']); ?>
+          <li class="flex place-items-stretch w-full border-l-4 border-gray-100 pl-4">
+            <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden">
+              <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
             </a>
-            <div class="ml-4">
-              <h4 class="text-lg font-medium hover:underline"><?php the_title(); ?></h4>
-              <p class="text-gray-500 text-sm"><?php echo get_the_date('Y/m/d'); ?></p>
+            <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
+              <div>
+                <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
+                <h4 class="text-[#090914] text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
+              </div>
+              <?php get_template_part('template-parts/button/arrow-button'); ?>
             </div>
           </li>
     <?php endif;
