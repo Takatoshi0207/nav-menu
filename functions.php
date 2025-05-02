@@ -37,8 +37,10 @@ function child_enqueue_styles()
 add_action('wp_enqueue_scripts', 'child_enqueue_styles', 15);
 add_filter('astra_the_title_enabled', '__return_false');
 
+
+//newsページ
 add_action('wp_enqueue_scripts', function () {
-	if (is_page_template('page-infomation.php')) {
+	if (is_page_template('page-information.php')) {
 		wp_enqueue_style(
 			'news-tailwind',
 			get_stylesheet_directory_uri() . '/css/news.css',
@@ -46,4 +48,9 @@ add_action('wp_enqueue_scripts', function () {
 			filemtime(get_stylesheet_directory() . '/css/news.css')
 		);
 	}
+});
+
+// サムネイル
+add_action('after_setup_theme', function () {
+	add_theme_support('post-thumbnails');
 });
