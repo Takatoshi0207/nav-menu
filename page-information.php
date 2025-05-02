@@ -2,6 +2,9 @@
 /* Template Name: お知らせ */
 get_header();
 ?>
+<!-- ページ番号取得 -->
+$paged = max( 1, get_query_var('paged'), get_query_var('page') );
+
 <div class="relative w-full border-solid border-b-4 border-b-[#FCCC78]">
   <img
     class="w-full aspect-[3/1] object-cover"
@@ -27,9 +30,10 @@ get_header();
     <?php
     $news = new WP_Query([
       'post_type'      => 'post',
-      'posts_per_page' => 5,
+      'posts_per_page' => 11,
       'orderby'        => 'date',
       'order'          => 'DESC',
+      'paged'          => $paged,
     ]);
 
     if ($news->have_posts()):
@@ -40,12 +44,19 @@ get_header();
         if (0 === $i):
           echo '<div class="flex gap-6 w-full py-10 2xl:justify-center">';
     ?>
-          <article class="overflow-hidden max-w-3xl w-1/2 rounded-lg shadow-md">
-            <a href="<?php the_permalink(); ?>">
-              <?php the_post_thumbnail('large', ['class' => 'w-full h-64 object-cover']); ?>
-              <div class="p-4">
-                <h2 class="text-2xl font-bold"><?php the_title(); ?></h2>
-                <p class="text-gray-500 mt-1"><?php echo get_the_date('Y/m/d'); ?></p>
+          <article class="relative overflow-hidden max-w-3xl w-1/3 aspect-square rounded-lg shadow-md">
+            <a href="<?php the_permalink(); ?>" class="block">
+              <!-- サムネイル -->
+              <?php the_post_thumbnail('large', ['class' => 'absolute inset-0 w-full h-full object-cover']); ?>
+
+              <!-- オーバーレイ -->
+              <div class="absolute inset-0 bg-black bg-opacity-25"></div>
+
+              <!-- ここに文字やボタンなども重ねてもOK -->
+              <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                <p class="text-xl font-semibold"><?php echo get_the_date('Y/m/d'); ?></p>
+                <h2 class="text-3xl text-white font-bold"><?php the_title(); ?></h2>
+                <?php get_template_part('template-parts/button/arrow-button'); ?>
               </div>
             </a>
           </article>
@@ -55,11 +66,11 @@ get_header();
 
           // 2件目（$i===1）のタイミングでグリッドを開く
           if (1 === $i):
-            echo '<ul class="space-y-4 max-w-3xl w-full">';
+            echo '<ul class="space-y-4 max-w-3xl w-2/3">';
           endif;
         ?>
           <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
-            <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden">
+            <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden flex items-center justify-center">
               <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
             </a>
             <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
@@ -80,8 +91,8 @@ get_header();
 
           /*** 4件目以降：リスト表示 ***/
         else: ?>
-          <li class="flex place-items-stretch w-full border-l-4 border-gray-100 pl-4">
-            <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden">
+          <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
+            <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden flex items-center justify-center">
               <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
             </a>
             <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
@@ -92,22 +103,53 @@ get_header();
               <?php get_template_part('template-parts/button/arrow-button'); ?>
             </div>
           </li>
-    <?php endif;
+        <?php endif; ?>
 
-      endwhile;
+      <?php endwhile; ?>
 
-      // もし4件目以降のリストを開いたなら、必ず閉じる
+      <?php
       if ($news->post_count > 3) {
         echo '</ul>';
       }
-
       wp_reset_postdata();
+      ?>
+      <!-- ページネーション -->
+      <?php
+      $links = paginate_links([
+        'base'      => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+        'format'    => '?paged=%#%',
+        'current'   => $paged,
+        'total'     => $news->max_num_pages,
+        'prev_text' => '« 前へ',
+        'next_text' => '次へ »',
+        'type'      => 'array',
+        'mid_size'  => 1,
+      ]);
 
-    else:
-      echo '<p class="text-center py-16 text-gray-600 text-xl">お知らせはありません。</p>';
-    endif;
-    ?>
+      if ($links):
+      ?>
+        <nav class="pt-12">
+          <ul class="flex justify-center space-x-4 text-2xl">
+            <?php foreach ($links as $link):
+              if (str_contains($link, 'current')):
+                $link = str_replace(
+                  'page-numbers current',
+                  'page-numbers current bg-black px-6 py-4 font-extrabold text-white rounded-md',
+                  $link
+                );
+              endif;
+            ?>
+              <li><?php echo $link; ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </nav>
+      <?php endif; ?>
+
+    <?php else: ?>
+      <p class="text-center py-16 text-gray-600 text-xl">お知らせはありません。</p>
+    <?php endif; ?>
   </div>
-  <?php get_footer(); ?>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
+</div>
+<?php get_footer(); ?>
+<script src="https://cdn.tailwindcss.com">
+</script>
