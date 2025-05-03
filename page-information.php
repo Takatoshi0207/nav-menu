@@ -47,9 +47,9 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
 
           /*** 1件目：フィーチャー表示 ***/
           if (0 === $i):
-            echo '<div class="flex gap-6 w-full py-10 2xl:justify-center">';
+            echo '<div class="md:flex gap-6 w-full py-10 2xl:justify-center">';
     ?>
-            <article class="relative overflow-hidden max-w-3xl w-1/3 aspect-square rounded-lg shadow-md">
+            <article class="mb-16 md:mb-0 relative overflow-hidden max-w-3xl w-full md:w-1/3 aspect-square rounded-lg shadow-md">
               <a href="<?php the_permalink(); ?>" class="block">
                 <!-- サムネイル -->
                 <?php the_post_thumbnail('large', ['class' => 'absolute inset-0 w-full h-full object-cover']); ?>
@@ -71,17 +71,17 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
 
             // 2件目（$i===1）のタイミングでグリッドを開く
             if (1 === $i):
-              echo '<ul class="space-y-4 max-w-3xl w-2/3">';
+              echo '<ul class="space-y-4 max-w-3xl w-full md:w-2/3">';
             endif;
           ?>
             <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-0 lg;pl-4">
-              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden flex items-center justify-center rounded-lg shadow-md">
-                <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
+              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-1/3 md:w-[200px] aspect-[1/1] overflow-hidden flex items-center justify-center ">
+                <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover rounded-lg shadow-md']); ?>
               </a>
               <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
                 <div>
-                  <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
-                  <h4 class="text-[#090914] text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
+                  <p class="text-gray-500 text-base md:text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
+                  <h4 class="text-[#090914] text-xl md:text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
                 </div>
                 <?php get_template_part('template-parts/button/arrow-button'); ?>
               </div>
@@ -91,19 +91,19 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
             if (2 === $i):
               echo '</div>';                   // grid 終了
               echo '<hr class="border-2 border-gray-400 h-0.5" />';
-              echo '<ul class="mt-8 grid grid-cols-2 gap-6">'; // list 開始
+              echo '<ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">'; // list 開始
             endif; ?>
 
             <!-- /*** 4件目以降：リスト表示 ***/ -->
           <?php else: ?>
             <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-0 lg;pl-4">
-              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden flex items-center justify-center rounded-lg shadow-md">
-                <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
+              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-1/3 md:w-[150px] aspect-[1/1] overflow-hidden flex items-center justify-center d">
+                <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover rounded-lg shadow-m']); ?>
               </a>
               <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
                 <div>
-                  <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
-                  <h4 class="text-[#090914] text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
+                  <p class="text-gray-500 text-base md:text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
+                  <h4 class="text-[#090914] text-xl md:text-2xl font-medium hover:underline"><?php the_title(); ?></h4>
                 </div>
                 <?php get_template_part('template-parts/button/arrow-button'); ?>
               </div>
@@ -123,7 +123,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
         while ($news->have_posts()) : $news->the_post(); ?>
           <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-0 lg;pl-4">
             <a href="<?php the_permalink(); ?>"
-              class="flex-shrink-0 w-[90px] lg:w-[150px] aspect-square overflow-hidden flex items-center justify-center ">
+              class="flex-shrink-0 w-1/3 lg:w-[150px] aspect-square overflow-hidden flex items-center justify-center ">
               <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover rounded-lg shadow-md']); ?>
             </a>
             <div class="ml-4 flex flex-1 flex-col justify-between">
