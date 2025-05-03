@@ -50,18 +50,19 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
             echo '<div class="md:flex gap-6 w-full py-10 2xl:justify-center">';
     ?>
             <article class="mb-16 md:mb-0 relative overflow-hidden max-w-3xl w-full md:w-1/3 aspect-square rounded-lg shadow-md">
-              <a href="<?php the_permalink(); ?>" class="block">
+              <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10">
                 <!-- サムネイル -->
                 <?php the_post_thumbnail('large', ['class' => 'absolute inset-0 w-full h-full object-cover']); ?>
 
                 <!-- オーバーレイ -->
-                <div class="absolute inset-0 bg-black bg-opacity-25"></div>
+                <div class="absolute inset-0 bg-black bg-opacity-25 !pointer-events-none"></div>
 
-                <!-- ここに文字やボタンなども重ねてもOK -->
-                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                <div class="absolute bottom-30 left-4 right-4 flex items-center justify-between p-4 text-white z-20">
                   <p class="text-xl font-semibold"><?php echo get_the_date('Y/m/d'); ?></p>
                   <h2 class="text-3xl text-white font-bold"><?php the_title(); ?></h2>
-                  <?php get_template_part('template-parts/button/arrow-button'); ?>
+                  <div class="absolute bottom-[-95px] left-4 right-4">
+                    <?php get_template_part('template-parts/button/arrow-button'); ?>
+                  </div>
                 </div>
               </a>
             </article>
