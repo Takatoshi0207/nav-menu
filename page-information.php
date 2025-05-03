@@ -75,7 +75,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
             endif;
           ?>
             <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
-              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden flex items-center justify-center">
+              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden flex items-center justify-center rounded-lg shadow-md">
                 <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
               </a>
               <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
@@ -97,7 +97,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
             <!-- /*** 4件目以降：リスト表示 ***/ -->
           <?php else: ?>
             <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
-              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden flex items-center justify-center">
+              <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden flex items-center justify-center rounded-lg shadow-md">
                 <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
               </a>
               <div class="mx-4 mt-4 flex flex-1 flex-col justify-between">
@@ -123,7 +123,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
         while ($news->have_posts()) : $news->the_post(); ?>
           <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
             <a href="<?php the_permalink(); ?>"
-              class="flex-shrink-0 w-[150px] aspect-square overflow-hidden flex items-center justify-center">
+              class="flex-shrink-0 w-[150px] aspect-square overflow-hidden flex items-center justify-center rounded-lg shadow-md">
               <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
             </a>
             <div class="ml-4 flex flex-1 flex-col justify-between">
