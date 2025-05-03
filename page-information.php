@@ -28,7 +28,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
     ">
 
   <!-- コンテンツ -->
-  <div class="bg-white w-3/4 max-w-8xl px-8 py-12 space-y-8">
+  <div class="bg-white w-[90%] lg:w-3/4 max-w-8xl px-4 lg:px-8 py-12 space-y-8">
     <?php
     $news = new WP_Query([
       'post_type'      => 'post',
@@ -74,7 +74,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
               echo '<ul class="space-y-4 max-w-3xl w-2/3">';
             endif;
           ?>
-            <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
+            <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-0 lg;pl-4">
               <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[200px] aspect-[1/1] overflow-hidden flex items-center justify-center rounded-lg shadow-md">
                 <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
               </a>
@@ -96,7 +96,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
 
             <!-- /*** 4件目以降：リスト表示 ***/ -->
           <?php else: ?>
-            <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
+            <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-0 lg;pl-4">
               <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-[150px] aspect-[1/1] overflow-hidden flex items-center justify-center rounded-lg shadow-md">
                 <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
               </a>
@@ -118,18 +118,18 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
 
       else:
 
-        // <!-- ページネーション -->
-        echo '<ul class="mt-8 grid grid-cols-2 gap-6">';
+        // <!-- 2ページ目以降 -->
+        echo '<ul class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">';
         while ($news->have_posts()) : $news->the_post(); ?>
-          <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-4">
+          <li class="flex place-items-stretch w-full max-w-[750px] border-l-4 border-gray-100 pl-0 lg;pl-4">
             <a href="<?php the_permalink(); ?>"
-              class="flex-shrink-0 w-[150px] aspect-square overflow-hidden flex items-center justify-center rounded-lg shadow-md">
-              <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover']); ?>
+              class="flex-shrink-0 w-[90px] lg:w-[150px] aspect-square overflow-hidden flex items-center justify-center ">
+              <?php the_post_thumbnail('thumbnail', ['class' => 'w-full object-cover rounded-lg shadow-md']); ?>
             </a>
             <div class="ml-4 flex flex-1 flex-col justify-between">
               <div>
-                <p class="text-gray-500 text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
-                <h4 class="text-2xl font-medium text-[#090914] hover:underline"><?php the_title(); ?></h4>
+                <p class="text-gray-500 text-base lg:text-xl"><?php echo get_the_date('Y/m/d'); ?></p>
+                <h4 class=" text-base lg:text-2xl font-medium text-[#090914] hover:underline"><?php the_title(); ?></h4>
               </div>
               <?php get_template_part('template-parts/button/arrow-button'); ?>
             </div>
@@ -153,12 +153,12 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
       if ($links):
         ?>
         <nav class="pt-12">
-          <ul class="flex justify-center space-x-4 text-2xl">
+          <ul class="flex justify-center space-x-4 text-base lg;text-2xl">
             <?php foreach ($links as $link):
               if (str_contains($link, 'current')):
                 $link = str_replace(
                   'page-numbers current',
-                  'page-numbers current bg-black px-6 py-4 font-extrabold text-white rounded-md',
+                  'page-numbers current bg-black p-3 lg:px-6 lg:py-4 font-extrabold text-white rounded-md',
                   $link
                 );
               endif;
