@@ -55,6 +55,11 @@
 		add_theme_support('post-thumbnails');
 	});
 
+	add_action('wp', function () {
+		if (is_singular('post')) {
+			add_filter('the_content', 'add_custom_class_to_h2');
+		}
+	});
 	function add_custom_class_to_h2($content)
 	{
 		$content = preg_replace_callback(
@@ -71,4 +76,3 @@
 		);
 		return $content;
 	}
-	add_filter('the_content', 'add_custom_class_to_h2');
