@@ -2,7 +2,7 @@
 
 @layer components {
   .custom-heading {
-    @apply md:!text-2xl !text-base font-bold !py-4 !px-2 !mb-4 relative flex items-center gap-2;
+    @apply md:!text-3xl !text-xl font-bold !py-4 !px-2 !mb-4 relative flex items-center gap-2;
 
     background-image: linear-gradient(
       90deg,

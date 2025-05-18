@@ -723,11 +723,6 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
-  .md\:grid-cols-4 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-  }
   .md\:\!text-4xl {
     @media (width >= 48rem) {
       font-size: var(--text-4xl) !important;
@@ -829,13 +824,13 @@
     gap: calc(var(--spacing) * 2);
     padding-inline: calc(var(--spacing) * 2) !important;
     padding-block: calc(var(--spacing) * 4) !important;
-    font-size: var(--text-base) !important;
-    line-height: var(--tw-leading, var(--text-base--line-height)) !important;
+    font-size: var(--text-xl) !important;
+    line-height: var(--tw-leading, var(--text-xl--line-height)) !important;
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
     @media (width >= 48rem) {
-      font-size: var(--text-2xl) !important;
-      line-height: var(--tw-leading, var(--text-2xl--line-height)) !important;
+      font-size: var(--text-3xl) !important;
+      line-height: var(--tw-leading, var(--text-3xl--line-height)) !important;
     }
     background-image: linear-gradient( 90deg, #f8e7ce, #f8e7ce, #fff1e0, #f8e7ce );
     background-size: 200% 200%;
