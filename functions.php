@@ -54,3 +54,21 @@
 	add_action('after_setup_theme', function () {
 		add_theme_support('post-thumbnails');
 	});
+
+	function add_custom_class_to_h2($content)
+	{
+		$content = preg_replace_callback(
+			'/<h2([^>]*)>/i',
+			function ($matches) {
+				// class属性が既にあるかチェック
+				if (strpos($matches[1], 'class=') !== false) {
+					return '<h2' . preg_replace('/class=["\']([^"\']*)["\']/', 'class="$1 custom-heading"', $matches[1]) . '>';
+				} else {
+					return '<h2' . $matches[1] . ' class="custom-heading">';
+				}
+			},
+			$content
+		);
+		return $content;
+	}
+	add_filter('the_content', 'add_custom_class_to_h2');

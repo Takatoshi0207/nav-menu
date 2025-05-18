@@ -1,5 +1,6 @@
 module.exports = {
-  content: ["./page-information.php", "/**/*.php"],
+  content: ["./page-information.php", "./**/*.php"],
+  safelist: ["custom-heading"],
   theme: {
     extend: {
       animation: {

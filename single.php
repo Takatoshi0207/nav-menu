@@ -30,7 +30,7 @@ $news_url = home_url('/news');
         </header>
 
         <!-- 本文 -->
-        <div class="mb-12 flex flex-col items-center">
+        <div class="mb-12 flex flex-col">
           <?php the_content(); ?>
         </div>
 

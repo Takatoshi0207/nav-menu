@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@layer components {
+  .custom-heading {
+    @apply bg-[#F8E7CE] md:!text-3xl !text-xl font-bold !py-4 !px-2 !mb-4 relative flex items-center gap-2;
+  }
+
+  .custom-heading::before {
+    content: "";
+    background-image: url("../svg/icon_h2.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 40px;
+    display: inline-block;
+  }
+
+  .custom-heading::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid #9a9a9b;
+  }
+}
