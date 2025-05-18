@@ -77,9 +77,10 @@ $news_url = home_url('/news');
           'numberposts' => 5,
           'post_status' => 'publish',
         ]);
-        foreach ($recent_posts as $post):
-          $post_id = $post['ID'];
-          $title = mb_strimwidth($post['post_title'], 0, 70, '...');
+        foreach ($recent_posts as $post_array):
+          $recent_post = get_post($post_array['ID']);
+          $post_id = $recent_post->ID;
+          $title = mb_strimwidth($recent_post->post_title, 0, 70, '...');
         ?>
           <li class="list-none">
             <a href="<?php echo get_permalink($post_id); ?>" class="flex items-center gap-2 group">
