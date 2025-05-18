@@ -63,11 +63,16 @@ if (!defined('ABSPATH')) {
 
 				<style>
 					/* ヘッダーのsticky設定 */
-					.main-header-bar-wrap {
-						position: sticky !important;
-						top: 0 !important;
-						z-index: 9999 !important;
-						background: #fff;
-						box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+					.elementor-element[data-settings*='"sticky":"top"'] {
+						position: fixed;
+						width: 100%;
+						z-index: 9999;
+						margin-bottom: 2rem;
+						top: 0;
+						left: 0;
+					}
+
+					.site-content {
+						padding-top: 150px;
 					}
 				</style>
