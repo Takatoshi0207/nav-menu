@@ -59,7 +59,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
 
                 <div class="absolute bottom-0 left-4 right-4 items-center justify-between p-4 text-white z-20">
                   <p class="text-xl font-semibold"><?php echo get_the_date('Y/m/d'); ?></p>
-                  <h2 class="text-3xl text-white font-bold"><?php the_title(); ?></h2>
+                  <h2 class="text-2xl md:text-xl text-white font-bold"><?php the_title(); ?></h2>
                   <div class="absolute bottom-[-95px] left-4 right-4">
                     <?php get_template_part('template-parts/button/arrow-button'); ?>
                   </div>
