@@ -60,3 +60,14 @@ if (!defined('ABSPATH')) {
 		<div id="content" class="site-content">
 			<div class="ast-container">
 				<?php astra_content_top(); ?>
+
+				<style>
+					/* ヘッダーのsticky設定 */
+					.main-header-bar-wrap {
+						position: sticky !important;
+						top: 0 !important;
+						z-index: 9999 !important;
+						background: #fff;
+						box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+					}
+				</style>
