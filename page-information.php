@@ -57,7 +57,7 @@ $paged = max(1, get_query_var('paged'), get_query_var('page'));
                 <!-- オーバーレイ -->
                 <div class="absolute inset-0 bg-black bg-opacity-25 !pointer-events-none"></div>
 
-                <div class="absolute bottom-30 left-4 right-4 flex items-center justify-between p-4 text-white z-20">
+                <div class="absolute bottom-0 left-4 right-4 items-center justify-between p-4 text-white z-20">
                   <p class="text-xl font-semibold"><?php echo get_the_date('Y/m/d'); ?></p>
                   <h2 class="text-3xl text-white font-bold"><?php the_title(); ?></h2>
                   <div class="absolute bottom-[-95px] left-4 right-4">
