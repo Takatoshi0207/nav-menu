@@ -747,7 +747,6 @@
     display: flex;
     align-items: center;
     gap: calc(var(--spacing) * 2);
-    background-color: #F8E7CE;
     padding-inline: calc(var(--spacing) * 2) !important;
     padding-block: calc(var(--spacing) * 4) !important;
     font-size: var(--text-xl) !important;
@@ -758,6 +757,10 @@
       font-size: var(--text-3xl) !important;
       line-height: var(--tw-leading, var(--text-3xl--line-height)) !important;
     }
+    background-image: linear-gradient( 90deg, #f8e7ce, #f8e7ce, #fff1e0, #f8e7ce );
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    animation: bg-move 4s linear infinite;
   }
   .custom-heading::before {
     content: "";
