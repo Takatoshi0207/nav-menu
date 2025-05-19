@@ -6,7 +6,7 @@ get_header();
 $news_url = home_url('/news');
 ?>
 
-<main class="container mx-auto px-2 py-4">
+<main class="container mx-auto py-4">
   <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
     <div class="md:col-span-3">
       <?php
@@ -69,7 +69,7 @@ $news_url = home_url('/news');
       ?>
     </div>
     <!-- ✅ 関連記事など -->
-    <aside class="lg:col-span-1 space-y-6 hidden lg:block sticky top-20">
+    <aside class="lg:col-span-1 space-y-6 hidden lg:block sticky top-52">
       <h3 class="text-xl font-bold border-b pb-4 !mb-4">最新記事</h3>
       <ul class="w-full !m-0 space-y-4">
         <?php

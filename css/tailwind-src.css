@@ -35,3 +35,9 @@
     border-bottom: 2px solid #9a9a9b;
   }
 }
+.sticky {
+  position: sticky;
+  top: 170px; /* ヘッダーの高さ + 余白 */
+  max-height: calc(100vh - 190px);
+  overflow-y: auto;
+}

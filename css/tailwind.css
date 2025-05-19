@@ -215,8 +215,8 @@
   .inset-0 {
     inset: calc(var(--spacing) * 0);
   }
-  .top-20 {
-    top: calc(var(--spacing) * 20);
+  .top-52 {
+    top: calc(var(--spacing) * 52);
   }
   .right-4 {
     right: calc(var(--spacing) * 4);
@@ -854,6 +854,12 @@
     width: 100%;
     border-bottom: 2px solid #9a9a9b;
   }
+}
+.sticky {
+  position: sticky;
+  top: 170px;
+  max-height: calc(100vh - 190px);
+  overflow-y: auto;
 }
 @property --tw-rotate-x {
   syntax: "*";
